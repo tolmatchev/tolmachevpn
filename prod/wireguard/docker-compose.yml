@@ -11,10 +11,10 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
-      - SERVERURL=auto #optional
+      - SERVERURL=auto #if host empty in peer, set serverurl manual
       - SERVERPORT=51820 #optional
       - PEERS=100 #optional
-      - PEERDNS=auto #optional
+      - PEERDNS=1.1.1.1,8.8.8.8 #optional
       - INTERNAL_SUBNET=10.13.13.0 #optional
       - ALLOWEDIPS=0.0.0.0/0 #optional
       - PERSISTENTKEEPALIVE_PEERS= #optional
