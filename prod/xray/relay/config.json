@@ -1,0 +1,85 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "tag": "relay",
+      "listen": "0.0.0.0",
+      "port": 443,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "generate from ./generate.md",
+            "flow": "xtls-rprx-vision"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "realitySettings": {
+          "show": false,
+          "dest": "www.rbc.ru:443",
+          "xver": 0,
+          "serverNames": [
+            "www.rbc.ru"
+          ],
+          "privateKey": "generate from ./generate.md",
+          "shortIds": [
+            "generate from ./generate.md"
+          ]
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "exit",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "178.208.79.148",
+            "port": 2087,
+            "users": [
+              {
+                "id": "from ../exit/config.json",
+                "encryption": "none",
+                "flow": "xtls-rprx-vision"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "raw",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "from ../exit/config.json",
+          "fingerprint": "from ../exit/config.json",
+          "publicKey": "from ../exit/config.json",
+          "shortId": "from ../exit/config.json"
+        }
+      }
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole"
+    }
+  ],
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": [
+          "relay"
+        ],
+        "outboundTag": "exit"
+      }
+    ]
+  }
+}
