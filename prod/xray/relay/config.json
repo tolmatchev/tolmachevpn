@@ -42,7 +42,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "178.208.79.148",
+            "address": "from ../exit/config.json",
             "port": 2087,
             "users": [
               {

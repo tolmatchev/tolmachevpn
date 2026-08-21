@@ -1,3 +1,10 @@
+install `docker + docker-compose`
+```bash
+apt update
+apt install docker.io
+apt install docker-compose
+```
+
 To generate `uuid`
 
 ```bash
